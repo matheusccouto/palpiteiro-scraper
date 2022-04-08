@@ -1,0 +1,47 @@
+name: Deploy Azure Function.
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  # Runtime
+  PYTHON_VERSION: "3."
+  # Secrets
+  CONNECTION: ${{ secrets.CONNECTION }}
+  GLOBO_USERNAME: ${{ secrets.GLOBO_USERNAME }}
+  GLOBO_PASSWORD: ${{ secrets.GLOBO_PASSWORD }}
+  GLBID: ${{ secrets.GLBID }}
+  THE_ODDS_API_KEY: ${{ secrets.THE_ODDS_API_KEY }}
+  # Azure
+  AZURE_FUNCTIONAPP_NAME: "palpiteiro-scraper"
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: "."
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout GitHub Action"
+        uses: actions/checkout@v2
+
+      - name: Setup Python ${{ env.PYTHON_VERSION }} Environment
+        uses: actions/setup-python@v1
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: "Resolve Project Dependencies Using Pip"
+        shell: bash
+        run: |
+          pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt --target=".python_packages/lib/site-packages"
+          popd
+
+      - name: "Run Azure Functions Action"
+        uses: Azure/functions-action@v1
+        id: fa
+        with:
+          app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
+          package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
+          publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
