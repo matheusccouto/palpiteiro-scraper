@@ -55,8 +55,7 @@ def main(mytimer: func.TimerRequest) -> None:
         logging.info("Game is over. Do not scrape.")
         return
 
-    if mytimer.past_due:
-        logging.info("Scrape data")
-        authenticate(USERNAME, PASSWORD)
-        helper.scrape(CONNECTION, CONTAINER, BLOBS, HEADERS, VERIFY_SSL)
-        return
+    logging.info("Scrape data")
+    authenticate(USERNAME, PASSWORD)
+    helper.scrape(CONNECTION, CONTAINER, BLOBS, HEADERS, VERIFY_SSL)
+    return

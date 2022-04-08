@@ -21,7 +21,7 @@ BLOBS = {
 VERIFY_SSL = True
 
 
-def main(mytimer: func.TimerRequest) -> None:
+def main(timer: func.TimerRequest) -> None:
     """Main execution"""
     logging.info("Python timer trigger function ran at %s", datetime.datetime.now())
 
@@ -29,7 +29,6 @@ def main(mytimer: func.TimerRequest) -> None:
         logging.info("Game is over. Do not scrape.")
         return
 
-    if mytimer.past_due:
-        logging.info("Scrape data")
-        helper.scrape(CONNECTION, CONTAINER, BLOBS, None, VERIFY_SSL)
-        return
+    logging.info("Scrape data")
+    helper.scrape(CONNECTION, CONTAINER, BLOBS, None, VERIFY_SSL)
+    return
