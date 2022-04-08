@@ -47,7 +47,7 @@ def authenticate(email, password):
     )
 
 
-def main(mytimer: func.TimerRequest) -> None:
+def main(timer: func.TimerRequest) -> None:
     """Main execution"""
     logging.info("Python timer trigger function ran at %s", datetime.datetime.now())
 
