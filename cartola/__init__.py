@@ -32,7 +32,7 @@ BLOBS = {
     f"esquemas/{NOW}.json": "https://api.cartola.globo.com/esquemas",
 }
 
-VERIFY_SSL = False
+VERIFY_SSL = True
 
 
 def authenticate(email, password):

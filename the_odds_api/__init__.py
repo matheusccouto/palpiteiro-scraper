@@ -17,7 +17,7 @@ BLOBS = {
     f"soccer_brazil_campeonato/{NOW}.json": f"https://api.the-odds-api.com/v4/sports/soccer_brazil_campeonato/odds/?apiKey={THE_ODDS_API_KEY}&regions=uk,eu&markets=h2h,spreads,totals",
 }
 
-VERIFY_SSL = False
+VERIFY_SSL = True
 
 
 def main(mytimer: func.TimerRequest) -> None:

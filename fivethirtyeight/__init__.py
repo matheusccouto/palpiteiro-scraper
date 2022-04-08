@@ -18,7 +18,7 @@ BLOBS = {
     f"global_rankings_intl/{NOW}.csv": "https://projects.fivethirtyeight.com/soccer-api/international/spi_global_rankings_intl.csv",
 }
 
-VERIFY_SSL = False
+VERIFY_SSL = True
 
 
 def main(mytimer: func.TimerRequest) -> None:
