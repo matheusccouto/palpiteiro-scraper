@@ -16,7 +16,7 @@ GLBID = os.environ["GLBID"]
 
 NOW = datetime.datetime.now().isoformat()
 HEADERS = {"X-GLB-Token": GLBID}
-CONTAINER = "Cartola"
+CONTAINER = "cartola"
 BLOBS = {
     f"mercado/status/{NOW}.json": "https://api.cartola.globo.com/mercado/status",
     f"mercado/destaques/{NOW}.json": "https://api.cartola.globo.com/mercado/destaques",
