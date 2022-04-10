@@ -14,7 +14,7 @@ USERNAME = os.environ["GLOBO_USERNAME"]
 PASSWORD = os.environ["GLOBO_PASSWORD"]
 GLBID = os.environ["GLBID"]
 
-NOW = datetime.datetime.now().isoformat()
+NOW = datetime.datetime.utcnow().isoformat()
 HEADERS = {"X-GLB-Token": GLBID}
 CONTAINER = "cartola"
 BLOBS = {

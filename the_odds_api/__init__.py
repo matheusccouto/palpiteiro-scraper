@@ -11,7 +11,7 @@ import helper
 CONNECTION = os.environ["CONNECTION"]
 THE_ODDS_API_KEY = os.environ["THE_ODDS_API_KEY"]
 
-NOW = datetime.datetime.now().isoformat()
+NOW = datetime.datetime.utcnow().isoformat()
 CONTAINER = "the-odds-api"
 BLOBS = {
     f"soccer_brazil_campeonato/{NOW}.json": f"https://api.the-odds-api.com/v4/sports/soccer_brazil_campeonato/odds/?apiKey={THE_ODDS_API_KEY}&regions=uk,eu&markets=h2h,spreads,totals",

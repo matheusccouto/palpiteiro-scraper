@@ -10,7 +10,7 @@ import helper
 
 CONNECTION = os.environ["CONNECTION"]
 
-NOW = datetime.datetime.now().isoformat()
+NOW = datetime.datetime.utcnow().isoformat()
 CONTAINER = "fivethirtyeight"
 BLOBS = {
     f"matches_latest/{NOW}.csv": "https://projects.fivethirtyeight.com/soccer-api/club/spi_matches_latest.csv",
